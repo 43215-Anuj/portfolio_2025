@@ -161,7 +161,7 @@ const Navbar = () => {
               Resume
             </Button>
           )}
-          <Tooltip arrow title="Updated theme">
+          <Tooltip arrow title={mode === "light" ? "Dark mode" : "Light mode"}>
             <IconButton variant="contained" onClick={toggleTheme}>
               {mode === "light" ? (
                 <LightModeIcon color="warning" />
