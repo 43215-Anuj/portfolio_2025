@@ -15,7 +15,7 @@ import RoofingRoundedIcon from "@mui/icons-material/RoofingRounded";
 import PersonPinRoundedIcon from "@mui/icons-material/PersonPinRounded";
 import ContactSupportRoundedIcon from "@mui/icons-material/ContactSupportRounded";
 import { NavLink } from "react-router";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Divider, Tooltip } from "@mui/material";
 import { FaDownload } from "react-icons/fa";
 
 const Navbar = () => {
@@ -41,6 +41,28 @@ const Navbar = () => {
     { title: "About", icon: <PersonPinRoundedIcon fontSize="12px" /> },
     { title: "Work", icon: <ContactSupportRoundedIcon fontSize="12px" /> },
   ];
+
+  const handleDownload = async () => {
+    try {
+      // Fetch data from your server (replace with your API endpoint)
+      const response = await fetch("/anuj_resume.pdf", {
+        responseType: "blob",
+      });
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "Anuj_Resume.pdf"); // Set your filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Release the object URL after download is complete
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading file:", error);
+    }
+  };
 
   return (
     <AppBar
@@ -75,13 +97,28 @@ const Navbar = () => {
                     to={item?.title.replace(" ", "-").toLowerCase()}
                     style={({ isActive }) => ({
                       textDecoration: "none",
-                      color: mode === "light" ? "#576076" : "#ffffff",
+                      alignItems: "center",
+                      color: isActive
+                        ? mode === "light"
+                          ? "#0fa3b1"
+                          : "#ffffff"
+                        : mode === "light"
+                        ? "#576076"
+                        : "#ffffff",
                     })}
                   >
-                    {item.title}
+                    {item.icon}
+                    <Typography variant="title" sx={{ marginLeft: "6px" }}>
+                      {item.title}
+                    </Typography>
                   </NavLink>
                 </MenuItem>
               ))}
+              <Divider variant="fullWidth" />
+              <MenuItem color="primary" onClick={handleDownload}>
+                <FaDownload size={12} style={{ marginRight: "4px" }} />
+                Resume
+              </MenuItem>
             </Menu>
           </>
         ) : (
@@ -114,20 +151,26 @@ const Navbar = () => {
           </Box>
         )}
         <Box sx={{ display: "flex", alignItems: "flex-end", gap: "12px" }}>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<FaDownload size={12} />}
-          >
-            Resume
-          </Button>
-          <IconButton variant="contained" onClick={toggleTheme}>
-            {mode === "light" ? (
-              <LightModeIcon color="warning" />
-            ) : (
-              <DarkModeIcon />
-            )}
-          </IconButton>
+          {isMobile ? null : (
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<FaDownload size={12} />}
+              onClick={handleDownload}
+            >
+              Resume
+            </Button>
+          )}
+          <Tooltip arrow title="Updated theme">
+            <IconButton variant="contained" onClick={toggleTheme}>
+              {mode === "light" ? (
+                <LightModeIcon color="warning" />
+              ) : (
+                <DarkModeIcon />
+              )}
+            </IconButton>
+          </Tooltip>
+
           {isMobile ? (
             <IconButton
               edge="start"

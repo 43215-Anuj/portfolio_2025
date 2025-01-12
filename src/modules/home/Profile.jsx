@@ -5,6 +5,7 @@ import {
   Grid2,
   IconButton,
   Snackbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -91,14 +92,16 @@ const Profile = () => {
             >
               Call
             </Button>
-            <IconButton
-              sx={{ border: "1px solid", borderRadius: "4px" }}
-              color="success"
-              variant="outlined"
-              onClick={() => handleContact("whatsapp")}
-            >
-              <FaWhatsapp />
-            </IconButton>
+            <Tooltip arrow title="Whatsapp me" placement="top">
+              <IconButton
+                sx={{ border: "1px solid", borderRadius: "4px" }}
+                color="success"
+                variant="outlined"
+                onClick={() => handleContact("whatsapp")}
+              >
+                <FaWhatsapp />
+              </IconButton>
+            </Tooltip>
             <Button
               color="secondary"
               sx={{ flexGrow: 1 }}
