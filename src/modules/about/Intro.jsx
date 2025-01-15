@@ -15,7 +15,7 @@ const Intro = () => {
       <Divider variant="fullWidth" />
       <Typography variant="body2" component={"p"}>
         Welcome to my page! <br />
-        I'm Fullstack developer from Lucknow, currently living in Delhi, India.
+        I'm Frontend developer from Lucknow, currently living in Delhi, India.
       </Typography>
       <Typography variant="body1" component={"p"}>
         A <strong>two time hackathon winner 🖥️</strong> and an experienced Web
