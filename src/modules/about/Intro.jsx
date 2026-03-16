@@ -2,6 +2,7 @@ import { Divider, Typography } from "@mui/material";
 import React from "react";
 import CustomCard from "../../hoc/Card";
 import TechStack from "./TechStack";
+import { getExperience } from "../../utils/common";
 
 const Intro = () => {
   return (
@@ -19,11 +20,11 @@ const Intro = () => {
       </Typography>
       <Typography variant="body1" component={"p"}>
         A <strong>two time hackathon winner 🖥️</strong> and an experienced Web
-        Developer with over <strong>4 years of expertise</strong> in building
-        scalable, responsive and usercentric web applications using React JS,
-        Redux, JavaScript and Webpack. Proficient in design tools like Figma,
-        with a hands-on experienced in AWS based micro services and Docker for
-        DevOps.
+        Developer with over <strong>{getExperience()} of expertise</strong> in
+        building scalable, responsive and usercentric web applications using
+        React JS, Redux, JavaScript and Webpack. Proficient in design tools like
+        Figma, with a hands-on experienced in AWS based micro services and
+        Docker for DevOps.
       </Typography>
       <Divider variant="fullWidth" sx={{ marginBottom: "8px" }} />
       <TechStack />

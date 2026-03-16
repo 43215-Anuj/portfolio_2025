@@ -12,29 +12,19 @@ import Work from "./pages/Work";
 export const ThemeContext = createContext();
 
 function App() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState(() => localStorage.getItem("themeMode") || "light");
 
   useEffect(() => {
-    //get current time
-    const currentTime = new Date().getHours();
-    if (currentTime < 6 || currentTime >= 18) {
-      setMode("dark");
-    } else {
-      setMode("light");
-    }
-    // Update every hour
-    const timer = setInterval(() => {
-      const currentTime = new Date().getHours();
-      if (currentTime < 6 || currentTime >= 18) {
-        setMode("dark");
-      } else {
-        setMode("light");
-      }
-    }, 60 * 60 * 1000);
+    // Only apply time-based theme if user has no saved preference
+    if (localStorage.getItem("themeMode")) return;
 
-    return () => {
-      clearInterval(timer);
+    const applyTimeTheme = () => {
+      const hour = new Date().getHours();
+      setMode(hour < 6 || hour >= 18 ? "dark" : "light");
     };
+    applyTimeTheme();
+    const timer = setInterval(applyTimeTheme, 60 * 60 * 1000);
+    return () => clearInterval(timer);
   }, []);
   const theme = getTheme(mode);
 

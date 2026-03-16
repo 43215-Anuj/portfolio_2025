@@ -1,4 +1,4 @@
-import { FaAws, FaGithub, FaGoogle, FaJava, FaReact } from "react-icons/fa";
+import { FaAws, FaDocker, FaGithub, FaGoogle, FaJava, FaNodeJs, FaReact } from "react-icons/fa";
 import {
   SiAdobephotoshop,
   SiCsswizardry,
@@ -9,6 +9,7 @@ import {
   SiJest,
   SiMui,
   SiNextdotjs,
+  SiPlaywright,
   SiPostman,
   SiSass,
   SiSparkar,
@@ -97,10 +98,31 @@ export const skills = [
   },
   {
     icon: <FaAws color="#FF9900" size={40} />,
-    name: "AWS (EC2 | S3 | Route 53 | Amplify | Lighsail)",
+    name: "AWS (EC2 | S3 | Route 53 | Amplify | Lightsail)",
     expertise: "Mediocre",
     experience: "Production Experience",
     percentage: "80",
+  },
+  {
+    icon: <FaNodeJs color="#3c873a" size={40} />,
+    name: "Node.js",
+    expertise: "Mediocre",
+    experience: "Production Experience",
+    percentage: "70",
+  },
+  {
+    icon: <SiPlaywright color="#45ba4b" size={40} />,
+    name: "Playwright",
+    expertise: "Mediocre",
+    experience: "Production Experience",
+    percentage: "75",
+  },
+  {
+    icon: <FaDocker color="#1d63ed" size={40} />,
+    name: "Docker",
+    expertise: "Mediocre",
+    experience: "Production Experience",
+    percentage: "70",
   },
   {
     icon: <SiDjango color="#092e20" size={40} />,
@@ -180,6 +202,13 @@ export const socialIcons = [
 ];
 
 export const experience = [
+  {
+    position: "Senior Experience Engineer",
+    duration: "Feb 2025 - Current",
+    image: "logos/PS-logo.svg",
+    institute: "Publicis Sapient",
+    achievement: "Worked for a Fintech org. named Lloyds Banking Group",
+  },
   {
     position: "Product Engineer (ReactJs)",
     duration: "Sep 2022 - Current",
@@ -273,20 +302,20 @@ export const develop = [
     description: "Real world project for an NGO based of Lucknow",
     tech: "React Js,Razor Pay",
   },
-  {
-    proj_name: "ISET Foundation",
-    url: "",
-    thumbnail: "/develop/isetf.png",
-    description: "Real world project for an NGO based of Lucknow",
-    tech: "React Js,Razor Pay",
-  },
-  {
-    proj_name: "Google Maps",
-    url: "https://mygooglemaps.netlify.app/",
-    thumbnail: "/develop/maps.png",
-    description: "Google Maps api integration.",
-    tech: "React Js",
-  },
+  // {
+  //   proj_name: "ISET Foundation",
+  //   url: "",
+  //   thumbnail: "/develop/isetf.png",
+  //   description: "Real world project for an NGO based of Lucknow",
+  //   tech: "React Js,Razor Pay",
+  // },
+  // {
+  //   proj_name: "Google Maps",
+  //   url: "https://mygooglemaps.netlify.app/",
+  //   thumbnail: "/develop/maps.png",
+  //   description: "Google Maps api integration.",
+  //   tech: "React Js",
+  // },
   {
     proj_name: "Questionnaire",
     url: "https://questionnairee.netlify.app/",

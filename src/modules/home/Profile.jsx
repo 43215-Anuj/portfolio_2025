@@ -16,6 +16,7 @@ import { socialIcons } from "../../utils/data";
 import { IoCopyOutline } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
+import { getExperience } from "../../utils/common";
 
 const Profile = () => {
   const [open, setOpen] = React.useState(false);
@@ -73,9 +74,10 @@ const Profile = () => {
             </h1>
           </Box>
           <Typography component={"p"} variant="body2">
-            Web Developer with over <strong>4 years</strong> of expertise in
-            building scalable, responsive and user-centric web applications
-            using <strong>React JS, Redux, JavaScript and Webpack.</strong>
+            Web Developer with over <strong>{getExperience()}</strong> of
+            expertise in building scalable, responsive and user-centric web
+            applications using{" "}
+            <strong>React JS, Redux, JavaScript and Webpack.</strong>
           </Typography>
           <Box
             sx={{

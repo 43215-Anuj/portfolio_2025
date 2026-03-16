@@ -29,14 +29,25 @@ const Experience = () => {
                 {exp.duration}
               </Typography>
               <Box sx={{ display: "flex", gap: "8px" }}>
-                <img
-                  style={{ borderRadius: "4px" }}
-                  src={"/" + exp.image}
-                  alt={exp.institute}
-                  width={"60px"}
-                  height={"60px"}
-                />
-                <Box>
+                <Box
+                  sx={{
+                    backgroundColor: "#e3e3e3",
+                    padding: "4px",
+                    borderRadius: "4px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <img
+                    style={{ borderRadius: "4px" }}
+                    src={"/" + exp.image}
+                    alt={exp.institute}
+                    width={"60px"}
+                    height={"60px"}
+                  />
+                </Box>
+                <Box sx={{ paddingLeft: 2 }}>
                   <Typography variant="body1">{exp.institute}</Typography>
                   <Typography variant="body2">{exp.position}</Typography>
                 </Box>

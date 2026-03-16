@@ -18,7 +18,6 @@ const About = () => {
         }}
       >
         <Intro />
-        
         <Testimonials />
         <Banner />
       </Grid2>

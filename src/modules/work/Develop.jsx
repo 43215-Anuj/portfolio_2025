@@ -1,8 +1,9 @@
-import { Box, Grid2, Typography } from "@mui/material";
-import React, { useContext } from "react";
+import { Box, Grid2, Skeleton, Typography } from "@mui/material";
+import React, { useContext, useState } from "react";
 import CustomCard from "../../hoc/Card";
 import { develop } from "../../utils/data";
 import { ThemeContext } from "../../App";
+import Banner from "../about/Banner";
 
 const Development = () => {
   const { mode } = useContext(ThemeContext);
@@ -15,7 +16,9 @@ const Development = () => {
         A list of personal projects I've worked on.
       </Typography>
       <Grid2 container spacing={2}>
-        {develop.map((dev, i) => (
+        {develop.map((dev, i) => {
+          const [imgLoaded, setImgLoaded] = useState(false);
+          return (
           <Grid2 key={i} item size={{ xs: 12, sm: 12, md: 6, lg: 4, xl: 4 }}>
             <Box
               sx={{
@@ -28,11 +31,28 @@ const Development = () => {
                 backgroundColor: mode === "light" ? "#f0f2f5" : "#121417",
               }}
             >
+              {!imgLoaded && (
+                <Box sx={{ width: "100%", position: "relative", paddingTop: "100%" }}>
+                  <Skeleton
+                    variant="rectangular"
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "8px",
+                    }}
+                  />
+                </Box>
+              )}
               <img
                 src={dev.thumbnail}
                 alt={dev.proj_name}
                 width={"100%"}
                 height={"auto"}
+                style={{ display: imgLoaded ? "block" : "none", borderRadius: "8px" }}
+                onLoad={() => setImgLoaded(true)}
               />
               <a
                 href={dev.url}
@@ -54,8 +74,10 @@ const Development = () => {
               </Typography>
             </Box>
           </Grid2>
-        ))}
+          );
+        })}
       </Grid2>
+      <Banner />
     </CustomCard>
   );
 };
